@@ -387,10 +387,6 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/oneplus
 
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
