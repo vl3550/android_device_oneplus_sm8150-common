@@ -393,6 +393,7 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.2.vendor \
     libprotobuf-cpp-full \
     libril_shim \
+    libshim_imsvidecoder \
     librmnetctl \
     libxml2 
 
