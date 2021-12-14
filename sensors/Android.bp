@@ -17,15 +17,18 @@ soong_config_module_type {
     name: "oneplus_msmnile_sensors_hal_cc_defaults",
     module_type: "cc_defaults",
     config_namespace: "ONEPLUS_MSMNILE_SENSORS",
-    value_variables: ["DEVICE"],
+    value_variables: ["ALS_POS_X", "ALS_POS_Y"],
     properties: ["cppflags"],
 }
 
 oneplus_msmnile_sensors_hal_cc_defaults {
     name: "oneplus_msmnile_sensors_hal_defaults",
     soong_config_variables: {
-        DEVICE: {
-            cppflags: ["-DDEVICE_%s"],
+        ALS_POS_X: {
+            cppflags: ["-DALS_POS_X=%s"],
+        },
+        ALS_POS_Y: {
+            cppflags: ["-DALS_POS_Y=%s"],
         },
     },
 }
@@ -35,7 +38,6 @@ cc_binary {
     stem: "android.hardware.sensors@2.0-service.multihal",
     defaults: [
         "hidl_defaults",
-        "oneplus_msmnile_sensors_hal_defaults",
     ],
     vendor: true,
     relative_install_path: "hw",
@@ -85,7 +87,6 @@ cc_binary {
         "libbase",
         "libgui",
         "libui",
-        "libsysutils",
         "libutils",
     ],
     cflags: [
