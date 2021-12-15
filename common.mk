@@ -203,7 +203,6 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
     libdisplayconfig.qti.vendor \
     libqdMetaData \
-    libtinyxml \
     libvulkan \
     memtrack.msmnile \
     vendor.display.config@1.0 \
@@ -219,6 +218,7 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.9.vendor \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor \
+    vendor.oneplus.hardware.display@1.0.vendor \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
@@ -343,13 +343,6 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw
 
-# OnePlus
-PRODUCT_PACKAGES += \
-    oneplus-fwk.oneplus_msmnile
-
-PRODUCT_BOOT_JARS += \
-    oneplus-fwk.oneplus_msmnile
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti \
@@ -371,13 +364,9 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
-# Vendor libstdc++
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
-
 # Vibrator
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service.oneplus_msmnile
+    vendor.qti.hardware.vibrator.service.oneplus
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
@@ -399,7 +388,7 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    device/oneplus/common
+    hardware/oneplus
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
@@ -423,7 +412,7 @@ PRODUCT_COPY_FILES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus_msmnile
+    vendor.lineage.touch@1.0-service.oneplus
 
 # Device Settings
 PRODUCT_PACKAGES += \
@@ -431,7 +420,7 @@ PRODUCT_PACKAGES += \
 
 # tri-state key
 PRODUCT_PACKAGES += \
-    tri-state-key_daemon
+    tri-state-key_daemon.vendor
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -460,7 +449,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi.hostapd@1.0.vendor \
     vendor.qti.hardware.wifi.hostapd@1.1.vendor \
     vendor.qti.hardware.wifi.supplicant@2.0.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.1.vendor \
+    vendor.qti.hardware.wifi.supgedit plicant@2.1.vendor \
     wifi-mac-generator \
     wpa_supplicant \
     wpa_supplicant.conf
@@ -473,14 +462,6 @@ PRODUCT_COPY_FILES += \
 # WiFi
 PRODUCT_PACKAGES += \
     WifiResCommon
-
-# WiFi Display
-PRODUCT_PACKAGES += \
-    libnl \
-    libwfdaac_vendor
-
-PRODUCT_BOOT_JARS += \
-    WfdCommon
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \

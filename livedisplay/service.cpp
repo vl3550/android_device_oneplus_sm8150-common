@@ -19,10 +19,10 @@
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>
 #include <hidl/HidlTransportSupport.h>
+#include <livedisplay/oneplus/AntiFlicker.h>
 #include <livedisplay/sdm/PictureAdjustment.h>
 #include <vendor/lineage/livedisplay/2.1/IPictureAdjustment.h>
 
-#include "AntiFlicker.h"
 #include "DisplayModes.h"
 
 using android::OK;
