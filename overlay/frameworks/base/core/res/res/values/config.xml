@@ -442,10 +442,4 @@
         <item>"/system/bin/surfaceflinger"</item>
     </string-array>
 
-    <!-- Whether device has warp charging support -->
-    <bool name="config_hasWarpCharger">true</bool>
-
-     <!-- Smart charging -->
-    <bool name="config_smartChargingAvailable">true</bool>
-
 </resources>
