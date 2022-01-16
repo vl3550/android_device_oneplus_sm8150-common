@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -45,12 +46,20 @@ import androidx.preference.TwoStatePreference;
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
+    private static final String KEY_CATEGORY_CAMERA = "camera";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_HBM_AUTOBRIGHTNESS_SWITCH = "hbm_autobrightness";
     public static final String KEY_HBM_AUTOBRIGHTNESS_THRESHOLD = "hbm_autobrightness_threshould";
+    public static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
+
+    private static final boolean sHasPopupCamera =
+        Build.DEVICE.equals("OnePlus7Pro") ||
+        Build.DEVICE.equals("OnePlus7TPro") ||
+        Build.DEVICE.equals("guacamole") ||
+        Build.DEVICE.equals("hotdog");
 
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mHBMAutobrightnessSwitch;
@@ -58,6 +67,8 @@ public class DeviceSettings extends PreferenceFragment
     private ListPreference mMiddleKeyPref;
     private ListPreference mBottomKeyPref;
     private VibratorStrengthPreference mVibratorStrength;
+    private TwoStatePreference mAlwaysCameraSwitch;
+    private PreferenceCategory mCameraCategory;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -88,6 +99,16 @@ public class DeviceSettings extends PreferenceFragment
         mHBMAutobrightnessSwitch.setChecked(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(DeviceSettings.KEY_HBM_AUTOBRIGHTNESS_SWITCH, false));
         mHBMAutobrightnessSwitch.setOnPreferenceChangeListener(this);
 
+        mCameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);
+        if (sHasPopupCamera) {
+            mAlwaysCameraSwitch = (TwoStatePreference) findPreference(KEY_ALWAYS_CAMERA_DIALOG);
+            boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
+                        KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG, 0) == 1;
+            mAlwaysCameraSwitch.setChecked(enabled);
+            mAlwaysCameraSwitch.setOnPreferenceChangeListener(this);
+        } else {
+            mCameraCategory.setVisible(false);
+        }
     }
 
     @Override
@@ -106,6 +127,12 @@ public class DeviceSettings extends PreferenceFragment
             SharedPreferences.Editor prefChange = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             prefChange.putBoolean(KEY_HBM_AUTOBRIGHTNESS_SWITCH, enabled).commit();
             Utils.enableService(getContext());
+            return true;
+        } else if (preference == mAlwaysCameraSwitch) {
+            boolean enabled = (Boolean) newValue;
+            Settings.System.putInt(getContext().getContentResolver(),
+                        KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG,
+                        enabled ? 1 : 0);
             return true;
         }
         return false;

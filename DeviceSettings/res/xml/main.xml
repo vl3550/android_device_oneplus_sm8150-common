@@ -75,4 +75,16 @@
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="camera"
+        android:title="@string/camera_title">
+        <SwitchPreference
+            android:key="always_on_camera_dialog"
+            android:icon="@drawable/camera"
+            android:title="@string/always_on_camera_dialog_title"
+            android:summaryOff="@string/always_on_camera_dialog_summary_off"
+            android:summaryOn="@string/always_on_camera_dialog_summary_on"
+            android:persistent="false" />
+    </PreferenceCategory>
 </PreferenceScreen>
