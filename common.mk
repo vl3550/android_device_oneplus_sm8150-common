@@ -442,6 +442,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.oneplus
 
+# OnePlus
+PRODUCT_PACKAGES += \
+    oneplus-fwk
+
 # Device Settings
 PRODUCT_PACKAGES += \
     DeviceSettings
