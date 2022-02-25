@@ -250,6 +250,10 @@ PRODUCT_PACKAGES += \
     vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor:64 \
     vendor.oneplus.hardware.display@1.0.vendor
 
+# FOD
+TARGET_HAS_UDFPS := true
+EXTRA_UDFPS_ANIMATIONS := true
+
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
