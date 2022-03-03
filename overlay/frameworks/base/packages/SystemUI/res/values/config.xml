@@ -31,13 +31,12 @@
 
     <!-- Whether to disable assist hint on lockscreen -->
     <bool name="config_disableAssistHintOnLockscreen">true</bool>
-    
+
     <!-- HBM type of UDFPS overlay.
-            0 - GLOBAL HBM 
+            0 - GLOBAL HBM
             1 - LOCAL HBM
     -->
-    <integer name="config_udfps_hbm_type">0</integer>
+    <integer name="config_udfpsHbmType">0</integer>
 
     <integer name="config_udfpsEnrollProgressBar" translatable="false">100</integer>
-
 </resources>
