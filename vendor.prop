@@ -187,3 +187,6 @@ persist.vendor.radio.uicc_se_enabled=false
 # SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SM8150
+
+# Telephony
+telephony.active_modems.max_count=2
