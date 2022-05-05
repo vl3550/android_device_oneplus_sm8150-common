@@ -19,3 +19,5 @@ allow hal_param_default property_socket:sock_file write;
 allow hal_param_default sysfs_project_info:dir search;
 allow hal_param_default init:unix_stream_socket connectto;
 allow hal_param_default sysfs_project_info:file r_file_perms;
+
+dontaudit hal_param_default bootloader_prop:property_service set;
