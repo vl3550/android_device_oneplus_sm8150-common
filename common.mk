@@ -263,6 +263,10 @@ EXTRA_UDFPS_ANIMATIONS := true
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
 
+# FUSE passthrough
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.fuse.passthrough.enable=true
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
